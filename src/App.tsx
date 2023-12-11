@@ -6,7 +6,6 @@ const App: React.FC = () => {
 
   return (
     <div className="w-screen flex flex-col">
-    
       <BrowserRouter>
         <Header />
         <Routes>
