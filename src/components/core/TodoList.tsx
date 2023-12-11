@@ -10,7 +10,7 @@ interface Props{
 
 }
 const TodoList:React.FC<Props> = ({todos, setTodos}) => {
-  return <div className=" text-center ">
+  return <div className="container grid sm:grid-cols-2  md:grid-cols-2 lg:grid-cols-3">
     {todos.map((todo,id)=>(
       <SingleTodo todo={todo} key={todo.id} todos={todos} setTodos={setTodos}  />
     ))}

@@ -12,7 +12,6 @@ type Props = {
     setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-
 const SingleTodo = ({ todo, todos, setTodos }: Props) => {
     const [edit, setEdit] = useState<boolean>(false);
     const [editTodo, setEditTodo] = useState<string>(todo.todo)
@@ -34,7 +33,7 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
         inputRef.current?.focus();
     }, [edit])
     return (
-        <form onSubmit={(e) => handleEdit(e, todo.id)} className='m-5 p-6 w-[20rem] h-[5rem] text-white rounded-lg flex justify-between bg-blue-950'>
+        <form onSubmit={(e) => handleEdit(e, todo.id)} className='container flex m-5 text-center p-6 w-[20rem] h-[5rem] lg:m-9 text-white rounded-lg justify-between bg-blue-950'>
             {edit ? (
                 <input ref={inputRef} value={editTodo} onChange={(e) => setEditTodo(e.target.value)} className='text-black outline-none' />
             ) : todo.isDone ? (
