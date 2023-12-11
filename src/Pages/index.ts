@@ -1,0 +1,1 @@
+export { Home } from "../Pages/home/Home";
