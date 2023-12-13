@@ -4,7 +4,6 @@ import { TiEdit } from "react-icons/ti";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { MdDone } from "react-icons/md";
 import { Todo } from '../../Interfaces/Interface';
-import { Draggable } from 'react-beautiful-dnd';
 
 type Props = {
     index: number;
@@ -34,31 +33,24 @@ const SingleTodo = ({ index, todo, todos, setTodos }: Props) => {
         inputRef.current?.focus();
     }, [edit])
     return (
-        <Draggable draggableId={todo.id.toString()} index={index}>
-            {
-                (provided,snapshot) => (
-                    <form onSubmit={(e) => handleEdit(e, todo.id)} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className={`container flex m-5 text-center p-6 w-[20rem] h-[5rem] lg:m-9 text-white rounded-lg justify-between bg-blue-950 ${snapshot.isDragging?'drag':""}`}>
-                        {edit ? (
-                            <input ref={inputRef} value={editTodo} onChange={(e) => setEditTodo(e.target.value)} className='text-black outline-none' />
-                        ) : todo.isDone ? (
-                            <s className=''>{todo.todo}</s>
-                        ) : (
-                            <span className=''>{todo.todo}</span>
-                        )}
-                        <div className='flex w-15 justify-between'>
-                            <span className='' onClick={(e) => {
-                                if (!edit && !todo.isDone) {
-                                    setEdit(!edit);
-                                }
-                            }} ><TiEdit size={25} /></span>
-                            <span className='' onClick={(e) => handleDelete(todo.id)} ><RiDeleteBin6Fill size={25} /></span>
-                            <span className='' onClick={(e) => handleDone(todo.id)} ><MdDone size={25} /></span>
-                        </div>
-                    </form>
-                )
-            }
-
-        </Draggable>
+        <form onSubmit={(e) => handleEdit(e, todo.id)} className={`container flex m-5 text-center p-6 w-[20rem] h-[5rem] lg:m-9 text-white rounded-lg justify-between bg-blue-950`}>
+            {edit ? (
+                <input ref={inputRef} value={editTodo} onChange={(e) => setEditTodo(e.target.value)} className='text-black outline-none' />
+            ) : todo.isDone ? (
+                <s className=''>{todo.todo}</s>
+            ) : (
+                <span className=''>{todo.todo}</span>
+            )}
+            <div className='flex w-15 justify-between'>
+                <span className='' onClick={(e) => {
+                    if (!edit && !todo.isDone) {
+                        setEdit(!edit);
+                    }
+                }} ><TiEdit size={25} /></span>
+                <span className='' onClick={(e) => handleDelete(todo.id)} ><RiDeleteBin6Fill size={25} /></span>
+                <span className='' onClick={(e) => handleDone(todo.id)} ><MdDone size={25} /></span>
+            </div>
+        </form>
 
     )
 }

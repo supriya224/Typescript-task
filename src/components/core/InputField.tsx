@@ -5,7 +5,6 @@ interface Props {
     todo: string;
     setTodo: React.Dispatch<React.SetStateAction<string>>;
     handleAdd: (e: React.FormEvent) => void
-
 }
 
 const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
@@ -26,5 +25,5 @@ const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
         </form>
     )
 }
-// focus-within:bg-blue-600
+
 export default InputField;
