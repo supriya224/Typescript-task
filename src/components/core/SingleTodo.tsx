@@ -33,7 +33,7 @@ const SingleTodo = ({ index, todo, todos, setTodos }: Props) => {
         inputRef.current?.focus();
     }, [edit])
     return (
-        <form onSubmit={(e) => handleEdit(e, todo.id)} className={`container flex m-5 text-center p-6 w-[20rem] h-[5rem] lg:m-9 text-white rounded-lg justify-between bg-blue-950`}>
+        <form onSubmit={(e) => handleEdit(e, todo.id)} className={` flex m-4 ml-4 w-[20rem] grid-cols-2 text-center p-6 h-[5rem] sm:w-[17rem] sm:grid-cols-2 md:w-[15rem] lg:ml-32 text-white rounded-lg justify-between bg-blue-950`}>
             {edit ? (
                 <input ref={inputRef} value={editTodo} onChange={(e) => setEditTodo(e.target.value)} className='text-black outline-none' />
             ) : todo.isDone ? (
